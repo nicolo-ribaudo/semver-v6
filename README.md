@@ -1,10 +1,21 @@
 semver(1) -- The semantic versioner for npm
 ===========================================
 
+> This repo is a fork to backport [717534ee353682f3bcf33e60a8af4292626d4441](https://github.com/npm/node-semver/commit/717534ee353682f3bcf33e60a8af4292626d4441) to version 6.
+>
+> Manually tested on:
+> - Node.js 6.17.1 with tap 12 (running `npm run test 'test/*'`).
+>   4 tests are failing because they use the `resolveMatchSnapshot` function,
+>   introduced in a newer tap  version
+> - Node.js 14.21.3 with tap 14
+> - Node.js 20.3.1 with tap 16
+>   3 tests in `test/cli.js` are failling with `child test left in queue:`,
+>   because the async tests API has changed in recent tap versions
+
 ## Install
 
 ```bash
-npm install semver
+npm install @nicolo-ribaudo/semver-v6
 ````
 
 ## Usage
@@ -12,7 +23,7 @@ npm install semver
 As a node module:
 
 ```js
-const semver = require('semver')
+const semver = require('@nicolo-ribaudo/semver-v6')
 
 semver.valid('1.2.3') // '1.2.3'
 semver.valid('a.b.c') // null
